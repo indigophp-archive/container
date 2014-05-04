@@ -12,6 +12,7 @@
 namespace Indigo\Container;
 
 use Fuel\Validation\ContainerValidator as Validator;
+use Fuel\Validation\ResultInterface;
 use Fuel\Common\DataContainer;
 use InvalidArgumentException;
 
@@ -32,13 +33,23 @@ class Validation extends DataContainer
 
         $result = $validator->run($data);
 
-        if ($result->isValid() === false) {
-            $error = $result->getErrors();
-
-            throw new InvalidArgumentException(reset($error));
-        }
+        $this->validate($result);
 
         parent::__construct($data, $readOnly);
+    }
+
+    public function validate(ResultInterface $result, $key = null)
+    {
+        if ($result->isValid() === false) {
+            if ($key === null) {
+                $error = $result->getErrors();
+                $error = reset($error);
+            } else {
+                $error = $result->getError($key);
+            }
+
+            throw new InvalidArgumentException($error);
+        }
     }
 
     /**
@@ -48,11 +59,7 @@ class Validation extends DataContainer
     {
         $result = $this->validator->runField($key, $value, $this->data);
 
-        if ($result->isValid() === false) {
-            $error = $result->getError($key);
-
-            throw new InvalidArgumentException($error);
-        }
+        $this->validate($result, $key);
 
         return parent::set($key, $value);
     }
@@ -77,11 +84,7 @@ class Validation extends DataContainer
 
         $result = $this->validator->run($arguments);
 
-        if ($result->isValid() === false) {
-            $error = $result->getErrors();
-
-            throw new InvalidArgumentException(reset($error));
-        }
+        $this->validate($result);
 
         return parent::merge($arguments);
     }

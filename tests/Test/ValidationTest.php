@@ -37,6 +37,7 @@ class ValidationTest extends AbstractTest
 
     /**
      * @covers ::__construct
+     * @covers ::validate
      * @group  Container
      */
     public function testConstruct()
@@ -51,6 +52,7 @@ class ValidationTest extends AbstractTest
 
     /**
      * @covers ::__construct
+     * @covers ::validate
      * @expectedException InvalidArgumentException
      * @group  Container
      */
@@ -66,6 +68,7 @@ class ValidationTest extends AbstractTest
 
     /**
      * @covers ::set
+     * @covers ::validate
      * @group  Container
      */
     public function testSet()
@@ -77,6 +80,7 @@ class ValidationTest extends AbstractTest
 
     /**
      * @covers ::set
+     * @covers ::validate
      * @expectedException InvalidArgumentException
      * @group  Container
      */
@@ -87,6 +91,7 @@ class ValidationTest extends AbstractTest
 
     /**
      * @covers ::merge
+     * @covers ::validate
      * @group  Container
      */
     public function testMerge()
@@ -98,6 +103,7 @@ class ValidationTest extends AbstractTest
 
     /**
      * @covers ::merge
+     * @covers ::validate
      * @expectedException InvalidArgumentException
      * @group  Container
      */
