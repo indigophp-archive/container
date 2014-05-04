@@ -21,7 +21,7 @@ use InvalidArgumentException;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class AbstractContainer extends DataContainer
+abstract class AbstractContainer extends DataContainer
 {
     /**
      * Validate a dataset
@@ -29,7 +29,7 @@ class AbstractContainer extends DataContainer
      * @param  array   $data
      * @throws InvalidArgumentException
      */
-    abstract public function validate(array $data)
+    abstract public function validate(array $data);
 
     /**
      * {@inheritdocs}

@@ -43,7 +43,7 @@ class Validation extends AbstractContainer
      */
     public function validate(array $data)
     {
-        $result = $validator->run($data);
+        $result = $this->validator->run($data);
 
         if ($result->isValid() === false) {
             $error = $result->getErrors();
@@ -58,7 +58,7 @@ class Validation extends AbstractContainer
      */
     public function set($key, $value)
     {
-        $result = $this->validator->runField($key, $value, $this->data);
+        $result = $this->validator->runField($key, array($key => $value));
 
         if ($result->isValid() === false) {
             throw new InvalidArgumentException($result->getError($key));
