@@ -1,5 +1,12 @@
 # Indigo Container
 
+[![Build Status](https://travis-ci.org/indigophp/container.svg?branch=develop)](https://travis-ci.org/indigophp/container)
+[![Code Coverage](https://scrutinizer-ci.com/g/indigophp/container/badges/coverage.png?s=e581c260b3750a3917a2520ba9ed8527761bcef1)](https://scrutinizer-ci.com/g/indigophp/container/)
+[![Latest Stable Version](https://poser.pugx.org/indigophp/container/v/stable.png)](https://packagist.org/packages/indigophp/container)
+[![Total Downloads](https://poser.pugx.org/indigophp/container/downloads.png)](https://packagist.org/packages/indigophp/container)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/indigophp/container/badges/quality-score.png?s=e6dd4f4a855d5bcf9b9c31467e087fafa8698253)](https://scrutinizer-ci.com/g/indigophp/container/)
+[![License](https://poser.pugx.org/indigophp/container/license.png)](https://packagist.org/packages/indigophp/container)
+
 **Container implementations to make data handling better.**
 
 
