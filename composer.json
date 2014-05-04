@@ -1,6 +1,6 @@
 {
     "name": "indigophp/container",
-    "description": "Container imlementations based on Fuel DataContainer",
+    "description": "Container implementations to make data handling better",
     "license": "MIT",
     "keywords": ["container"],
     "homepage": "https://indigophp.com",
@@ -12,8 +12,13 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "fuelphp/common": "dev-master",
+        "fuelphp/common": "dev-master"
+    },
+    "require-dev": {
         "fuelphp/validation": "dev-master"
+    },
+    "suggest": {
+        "fuelphp/validation": "Used for Validation and Struct container"
     },
     "autoload": {
         "psr-0": {
