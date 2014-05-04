@@ -3,7 +3,7 @@
 namespace Indigo\Container\Test;
 
 use Indigo\Container\Struct;
-use Fuel\Validation\ContainerValidator as Validator;
+use Fuel\Validation\Validator;
 
 /**
  * Tests for Struct container

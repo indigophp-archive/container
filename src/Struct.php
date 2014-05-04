@@ -25,7 +25,7 @@ class Struct extends Validation
 {
     protected $struct = array();
 
-    protected $validatorClass = 'Fuel\\Validation\\ContainerValidator';
+    protected $validatorClass = 'Fuel\\Validation\\Validator';
 
     public function __construct(array $data = array(), $readOnly = false)
     {

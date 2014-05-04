@@ -21,9 +21,6 @@
         "fuelphp/validation": "Used for Validation and Struct container"
     },
     "autoload": {
-        "psr-0": {
-            "Fuel\\Validation\\": "lib/"
-        },
         "psr-4": {
             "Indigo\\Container\\": ["src/", "tests/"]
         }

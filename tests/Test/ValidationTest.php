@@ -3,7 +3,7 @@
 namespace Indigo\Container\Test;
 
 use Indigo\Container\Validation;
-use Fuel\Validation\ContainerValidator as Validator;
+use Fuel\Validation\Validator;
 use Fuel\Common\DataContainer;
 
 /**
