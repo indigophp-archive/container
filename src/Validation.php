@@ -12,7 +12,6 @@
 namespace Indigo\Container;
 
 use Fuel\Validation\ContainerValidator as Validator;
-use Fuel\Validation\RuleProvider\FromArray;
 use Fuel\Common\DataContainer;
 use InvalidArgumentException;
 
