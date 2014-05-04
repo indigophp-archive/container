@@ -59,7 +59,9 @@ class Validation extends DataContainer
     {
         $result = $this->validator->runField($key, $value, $this->data);
 
-        $this->validate($result, $key);
+        if ($result->isValid() === false) {
+            throw new InvalidArgumentException($result->getError($key));
+        }
 
         return parent::set($key, $value);
     }
