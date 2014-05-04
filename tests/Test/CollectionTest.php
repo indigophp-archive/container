@@ -3,6 +3,7 @@
 namespace Indigo\Container\Test;
 
 use Indigo\Container\Collection;
+use Fuel\Validation\Rule\Type;
 
 /**
  * Tests for Collection container
@@ -14,7 +15,8 @@ class CollectionTest extends AbstractTest
 {
     public function setUp()
     {
-        $this->container = new Collection('string');
+        $type = new Type('string');
+        $this->container = new Collection($type);
     }
 
     /**
@@ -25,7 +27,7 @@ class CollectionTest extends AbstractTest
     public function testConstruct()
     {
         $container = new Collection(
-            'string',
+            new Type('string'),
             array(
                 'test' => 'test',
                 'test2' => 'test2',
@@ -37,23 +39,11 @@ class CollectionTest extends AbstractTest
      * @covers ::__construct
      * @covers ::validate
      * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Invalid type.
-     * @group  Container
-     */
-    public function testConstructFailure()
-    {
-        $container = new Collection(123);
-    }
-
-    /**
-     * @covers ::__construct
-     * @covers ::validate
-     * @expectedException InvalidArgumentException
      * @group  Container
      */
     public function testConstructDatasetFailure()
     {
-        $container = new Collection('string', array(123));
+        $container = new Collection(new Type('string'), array(123));
     }
 
     /**
@@ -62,30 +52,7 @@ class CollectionTest extends AbstractTest
      */
     public function testType()
     {
-        $this->assertEquals('string', $this->container->getType());
-    }
-
-    /**
-     * @covers ::isPrimitive
-     * @group  Container
-     */
-    public function testIsPrimitive()
-    {
-        $this->assertTrue($this->container->isPrimitive());
-    }
-
-    /**
-     * @covers ::isValid
-     * @group  Container
-     */
-    public function testValid()
-    {
-        $this->assertTrue($this->container->isValid('string'));
-        $this->assertFalse($this->container->isValid(123));
-
-        $container = new Collection('stdClass');
-
-        $this->assertTrue($container->isValid(new \stdClass()));
+        $this->assertEquals(new Type('string'), $this->container->getType());
     }
 
     /**
@@ -95,7 +62,7 @@ class CollectionTest extends AbstractTest
      */
     public function testValidate()
     {
-        $this->container->validate(123);
+        $this->container->validate(array(123));
     }
 
     /**
@@ -122,6 +89,31 @@ class CollectionTest extends AbstractTest
     }
 
     /**
+     * @covers ::setContents
+     * @covers ::validate
+     * @group  Container
+     */
+    public function testSetContents()
+    {
+        $contents = array('test' => 'test');
+
+        $this->container->setContents(array('test' => 'test'));
+
+        $this->assertEquals($contents, $this->container->getContents());
+    }
+
+    /**
+     * @covers ::setContents
+     * @covers ::validate
+     * @expectedException InvalidArgumentException
+     * @group  Container
+     */
+    public function testSetContentsFailure()
+    {
+        $this->container->setContents(array('test' => 123));
+    }
+
+    /**
      * @covers ::merge
      * @covers ::validate
      * @group  Container
@@ -143,7 +135,7 @@ class CollectionTest extends AbstractTest
     {
         $this->container->merge(
             array('test' => 123),
-            new Collection('string', array('test'))
+            new Collection(new Type('string'), array('test'))
         );
     }
 }

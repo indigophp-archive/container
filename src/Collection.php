@@ -12,6 +12,7 @@
 namespace Indigo\Container;
 
 use Fuel\Common\DataContainer;
+use Fuel\Validation\Rule\Type;
 use InvalidArgumentException;
 
 /**
@@ -24,31 +25,17 @@ use InvalidArgumentException;
 class Collection extends DataContainer
 {
     /**
-     * Contains the name of the type
+     * Holds the Type rule object
      *
-     * @var string
+     * @var Type
      */
     private $type;
 
-    /**
-     * Check whether type is primitive (has is_ function)
-     *
-     * @var boolean
-     */
-    private $primitive;
-
-    public function __construct($type, array $data = array(), $readOnly = false)
+    public function __construct(Type $type, array $data = array(), $readOnly = false)
     {
-        if (empty($type) or is_string($type) === false) {
-            throw new InvalidArgumentException('Invalid type.');
-        }
-
-        $this->primitive = function_exists('is_'.$type);
         $this->type = $type;
 
-        foreach ($data as $value) {
-            $this->validate($value);
-        }
+        $this->validate($data);
 
         parent::__construct($data, $readOnly);
     }
@@ -64,41 +51,28 @@ class Collection extends DataContainer
     }
 
     /**
-     * Check whether type of collection is primitive
+     * Validate a dataset
      *
-     * @return boolean
-     */
-    public function isPrimitive()
-    {
-        return $this->primitive;
-    }
-
-    /**
-     * Validate a value
-     *
-     * @param  mixed   $value
-     * @return boolean
-     */
-    public function isValid($value)
-    {
-        if ($this->primitive === true) {
-            return call_user_func('is_'.$this->type, $value);
-        }
-
-        return $value instanceof $this->type;
-    }
-
-    /**
-     * Validate a value
-     *
-     * @param  mixed   $value
+     * @param  array   $data
      * @throws InvalidArgumentException
      */
-    public function validate($value)
+    public function validate(array $data)
     {
-        if ($this->isValid($value) === false) {
-            throw new InvalidArgumentException('The item is not one of the given type.');
+        foreach ($data as $value) {
+            if ($this->type->validate($value) === false) {
+                throw new InvalidArgumentException($this->type->getMessage());
+            }
         }
+    }
+
+    /**
+     * {@inheritdocs}
+     */
+    public function setContents(array $data)
+    {
+        $this->validate($data);
+
+        return parent::setContents($data);
     }
 
     /**
@@ -106,7 +80,7 @@ class Collection extends DataContainer
      */
     public function set($key, $value)
     {
-        $this->validate($value);
+        $this->validate(array($value));
 
         return parent::set($key, $value);
     }
@@ -127,9 +101,7 @@ class Collection extends DataContainer
 
         $arguments = call_user_func_array('Fuel\\Common\\Arr::merge', $arguments);
 
-        foreach ($arguments as $key => $value) {
-            $this->validate($value);
-        }
+        $this->validate($arguments);
 
         return parent::merge($arguments);
     }
