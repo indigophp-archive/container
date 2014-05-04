@@ -13,7 +13,6 @@ namespace Indigo\Container;
 
 use Fuel\Validation\Validator;
 use Fuel\Validation\RuleProvider\FromStruct;
-use Fuel\Common\Arr;
 
 /**
  * Struct Container
@@ -38,6 +37,7 @@ abstract class Struct extends Validation
     public static function createValidator()
     {
         $validator = new static::$validatorClass;
+
         return static::populateValidator($validator);
     }
 

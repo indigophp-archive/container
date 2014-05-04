@@ -52,7 +52,7 @@ class Collection extends AbstractContainer
     /**
      * Validate a dataset
      *
-     * @param  array   $data
+     * @param  array                    $data
      * @throws InvalidArgumentException
      */
     public function validate(array $data)

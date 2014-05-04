@@ -12,7 +12,6 @@
 namespace Indigo\Container;
 
 use Fuel\Validation\Validator;
-use Fuel\Validation\ResultInterface;
 use InvalidArgumentException;
 
 /**
@@ -52,7 +51,7 @@ class Validation extends AbstractContainer
     /**
      * Validate a dataset
      *
-     * @param  array   $data
+     * @param  array                    $data
      * @throws InvalidArgumentException
      */
     public function validate(array $data)

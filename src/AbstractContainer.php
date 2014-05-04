@@ -26,7 +26,7 @@ abstract class AbstractContainer extends DataContainer
     /**
      * Validate a dataset
      *
-     * @param  array   $data
+     * @param  array                    $data
      * @throws InvalidArgumentException
      */
     abstract public function validate(array $data);
