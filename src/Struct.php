@@ -12,7 +12,8 @@
 namespace Indigo\Container;
 
 use Fuel\Validation\Validator;
-use Fuel\Validation\RuleProvider\FromArray;
+use Fuel\Validation\RuleProvider\FromStruct;
+use Fuel\Common\Arr;
 
 /**
  * Struct Container
@@ -21,24 +22,29 @@ use Fuel\Validation\RuleProvider\FromArray;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Struct extends Validation
+abstract class Struct extends Validation
 {
-    protected $struct = array();
+    protected static $struct = array();
 
-    protected $validatorClass = 'Fuel\\Validation\\Validator';
+    protected static $validatorClass = 'Fuel\\Validation\\Validator';
 
     public function __construct(array $data = array(), $readOnly = false)
     {
-        $validator = new $this->validatorClass;
-        $this->populateValidator($validator);
+        $validator = $this->createValidator();
 
         parent::__construct($validator, $data, $readOnly);
     }
 
-    public function populateValidator(Validator $validator)
+    public static function createValidator()
     {
-        $generator = new FromArray;
-        $generator->setData($this->struct)->populateValidator($validator);
+        $validator = new static::$validatorClass;
+        return static::populateValidator($validator);
+    }
+
+    public static function populateValidator(Validator $validator)
+    {
+        $generator = new FromStruct;
+        $generator->setData(static::$struct)->populateValidator($validator);
 
         return $validator;
     }

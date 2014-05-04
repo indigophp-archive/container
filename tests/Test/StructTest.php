@@ -5,6 +5,8 @@ namespace Indigo\Container\Test;
 use Indigo\Container\Struct;
 use Fuel\Validation\Validator;
 
+require_once(__DIR__.'/../ExampleStruct.php');
+
 /**
  * Tests for Struct container
  *
@@ -15,7 +17,7 @@ class StructTest extends AbstractTest
 {
     public function setUp()
     {
-        $this->container = new Struct;
+        $this->container = new \ExampleStruct;
     }
 
     /**
@@ -24,7 +26,7 @@ class StructTest extends AbstractTest
      */
     public function testConstruct()
     {
-        $container = new Struct(
+        $container = new \ExampleStruct(
             array(
                 'email' => 'user@example.com'
             )
@@ -32,16 +34,17 @@ class StructTest extends AbstractTest
     }
 
     /**
+     * @covers ::createValidator
      * @covers ::populateValidator
      * @group  Container
      */
-    public function testPopulate()
+    public function testValidator()
     {
-        $validator = new Validator;
+        $validator = \ExampleStruct::createValidator();
 
         $this->assertSame(
             $validator,
-            $this->container->populateValidator($validator)
+            $this->container->populateValidator(new Validator)
         );
     }
 }

@@ -67,6 +67,23 @@ class ValidationTest extends AbstractTest
     }
 
     /**
+     * @covers ::getValidator
+     * @covers ::setValidator
+     * @group  Container
+     */
+    public function testGetSetValidator()
+    {
+        $validator = $this->container->getValidator();
+
+        $this->assertSame($this->validator, $validator);
+
+        $this->assertSame(
+            $this->container,
+            $this->container->setValidator($validator)
+        );
+    }
+
+    /**
      * @covers ::set
      * @covers ::validate
      * @group  Container

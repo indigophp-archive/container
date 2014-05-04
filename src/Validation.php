@@ -35,6 +35,20 @@ class Validation extends AbstractContainer
         parent::__construct($data, $readOnly);
     }
 
+    public function getValidator()
+    {
+        return $this->validator;
+    }
+
+    public function setValidator(Validator $validator)
+    {
+        $this->validator = $validator;
+
+        $this->validate($this->data);
+
+        return $this;
+    }
+
     /**
      * Validate a dataset
      *
