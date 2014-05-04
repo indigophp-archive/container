@@ -12,13 +12,8 @@
     ],
     "require": {
         "php": ">=5.4",
-        "fuelphp/common": "dev-master"
-    },
-    "require-dev": {
+        "fuelphp/common": "dev-master",
         "fuelphp/validation": "dev-master"
-    },
-    "suggest": {
-        "fuelphp/validation": "Used for Validation and Struct container"
     },
     "autoload": {
         "psr-4": {
