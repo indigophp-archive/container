@@ -11,7 +11,6 @@
 
 namespace Indigo\Container;
 
-use Fuel\Common\DataContainer;
 use Fuel\Validation\Rule\Type;
 use InvalidArgumentException;
 
@@ -22,7 +21,7 @@ use InvalidArgumentException;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Collection extends DataContainer
+class Collection extends AbstractContainer
 {
     /**
      * Holds the Type rule object
@@ -68,41 +67,10 @@ class Collection extends DataContainer
     /**
      * {@inheritdocs}
      */
-    public function setContents(array $data)
-    {
-        $this->validate($data);
-
-        return parent::setContents($data);
-    }
-
-    /**
-     * {@inheritdocs}
-     */
     public function set($key, $value)
     {
         $this->validate(array($value));
 
         return parent::set($key, $value);
-    }
-
-    /**
-     * {@inheritdocs}
-     */
-    public function merge($arg)
-    {
-        $arguments = array_map(function ($array) {
-            if ($array instanceof DataContainer) {
-                return $array->getContents();
-            }
-
-            return $array;
-
-        }, func_get_args());
-
-        $arguments = call_user_func_array('Fuel\\Common\\Arr::merge', $arguments);
-
-        $this->validate($arguments);
-
-        return parent::merge($arguments);
     }
 }

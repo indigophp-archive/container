@@ -13,7 +13,6 @@ namespace Indigo\Container;
 
 use Fuel\Validation\Validator;
 use Fuel\Validation\ResultInterface;
-use Fuel\Common\DataContainer;
 use InvalidArgumentException;
 
 /**
@@ -23,7 +22,7 @@ use InvalidArgumentException;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Validation extends DataContainer
+class Validation extends AbstractContainer
 {
     protected $validator;
 
@@ -31,22 +30,24 @@ class Validation extends DataContainer
     {
         $this->validator = $validator;
 
-        $result = $validator->run($data);
-
-        $this->validate($result);
+        $this->validate($data);
 
         parent::__construct($data, $readOnly);
     }
 
-    public function validate(ResultInterface $result, $key = null)
+    /**
+     * Validate a dataset
+     *
+     * @param  array   $data
+     * @throws InvalidArgumentException
+     */
+    public function validate(array $data)
     {
+        $result = $validator->run($data);
+
         if ($result->isValid() === false) {
-            if ($key === null) {
-                $error = $result->getErrors();
-                $error = reset($error);
-            } else {
-                $error = $result->getError($key);
-            }
+            $error = $result->getErrors();
+            $error = reset($error);
 
             throw new InvalidArgumentException($error);
         }
@@ -64,30 +65,5 @@ class Validation extends DataContainer
         }
 
         return parent::set($key, $value);
-    }
-
-    /**
-     * {@inheritdocs}
-     */
-    public function merge($arg)
-    {
-        $arguments = array_map(function ($array) {
-            if ($array instanceof DataContainer) {
-                return $array->getContents();
-            }
-
-            return $array;
-
-        }, func_get_args());
-
-        array_unshift($arguments, $this->data);
-
-        $arguments = call_user_func_array('Fuel\\Common\\Arr::merge', $arguments);
-
-        $result = $this->validator->run($arguments);
-
-        $this->validate($result);
-
-        return parent::merge($arguments);
     }
 }
