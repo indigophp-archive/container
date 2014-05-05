@@ -12,7 +12,7 @@
 namespace Indigo\Container;
 
 use Fuel\Validation\Validator;
-use Fuel\Validation\RuleProvider\FromStruct;
+use Fuel\Validation\RuleProvider\FromArray;
 
 /**
  * Struct Container
@@ -43,7 +43,7 @@ abstract class Struct extends Validation
 
     public function populateValidator(Validator $validator)
     {
-        $generator = new FromStruct;
+        $generator = new FromArray;
         $generator->setData($this->struct)->populateValidator($validator);
 
         return $validator;
