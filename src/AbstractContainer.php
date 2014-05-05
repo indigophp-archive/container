@@ -14,7 +14,7 @@ namespace Indigo\Container;
 use Fuel\Common\DataContainer;
 use InvalidArgumentException;
 
-if(!class_exists('Arr')) {
+if (!class_exists('Arr')) {
     // make Arr available in the global namespace
     class_alias('Fuel\Common\Arr', 'Arr');
 }
