@@ -42,7 +42,7 @@ class StructTest extends AbstractTest
     {
         $validator = \ExampleStruct::createValidator();
 
-        $this->assertSame(
+        $this->assertEquals(
             $validator,
             $this->container->populateValidator(new Validator)
         );
