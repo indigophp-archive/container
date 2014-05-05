@@ -14,6 +14,12 @@ namespace Indigo\Container;
 use Fuel\Common\DataContainer;
 use InvalidArgumentException;
 
+if( ! class_exists('Arr'))
+{
+    // make Arr available in the global namespace
+    class_alias('Fuel\Common\Arr', 'Arr');
+}
+
 /**
  * Abstract container
  *
@@ -55,7 +61,7 @@ abstract class AbstractContainer extends DataContainer
 
         }, func_get_args());
 
-        $arguments = call_user_func_array('Fuel\\Common\\Arr::merge', $arguments);
+        $arguments = call_user_func_array('Arr::merge', $arguments);
 
         $this->validate($arguments);
 
