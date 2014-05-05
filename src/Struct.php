@@ -23,9 +23,9 @@ use Fuel\Validation\RuleProvider\FromStruct;
  */
 abstract class Struct extends Validation
 {
-    protected static $struct = array();
+    protected $struct = array();
 
-    protected static $validatorClass = 'Fuel\\Validation\\Validator';
+    protected $validatorClass = 'Fuel\\Validation\\Validator';
 
     public function __construct(array $data = array(), $readOnly = false)
     {
@@ -34,17 +34,17 @@ abstract class Struct extends Validation
         parent::__construct($validator, $data, $readOnly);
     }
 
-    public static function createValidator()
+    public function createValidator()
     {
-        $validator = new static::$validatorClass;
+        $validator = new $this->validatorClass;
 
-        return static::populateValidator($validator);
+        return $this->populateValidator($validator);
     }
 
-    public static function populateValidator(Validator $validator)
+    public function populateValidator(Validator $validator)
     {
         $generator = new FromStruct;
-        $generator->setData(static::$struct)->populateValidator($validator);
+        $generator->setData($this->struct)->populateValidator($validator);
 
         return $validator;
     }

@@ -22,6 +22,8 @@ class StructTest extends AbstractTest
 
     /**
      * @covers ::__construct
+     * @covers ::createValidator
+     * @covers ::populateValidator
      * @group  Container
      */
     public function testConstruct()
@@ -30,21 +32,6 @@ class StructTest extends AbstractTest
             array(
                 'email' => 'user@example.com'
             )
-        );
-    }
-
-    /**
-     * @covers ::createValidator
-     * @covers ::populateValidator
-     * @group  Container
-     */
-    public function testValidator()
-    {
-        $validator = \ExampleStruct::createValidator();
-
-        $this->assertEquals(
-            $validator,
-            $this->container->populateValidator(new Validator)
         );
     }
 }
