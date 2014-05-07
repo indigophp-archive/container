@@ -16,9 +16,6 @@
         "fuelphp/validation": "dev-master"
     },
     "autoload": {
-        "psr-0": {
-            "Fuel\\Validation\\": "lib/"
-        },
         "psr-4": {
             "Indigo\\Container\\": ["src/", "tests/"]
         }
