@@ -24,6 +24,5 @@
         "psr-4": {
             "Indigo\\Container\\Test\\": "tests/"
         }
-    },
-    "minimum-stability": "dev"
+    }
 }
