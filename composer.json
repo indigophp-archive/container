@@ -17,7 +17,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Indigo\\Container\\": ["src/", "tests/"]
+            "Indigo\\Container\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Indigo\\Container\\Test\\": "tests/"
         }
     },
     "minimum-stability": "dev"

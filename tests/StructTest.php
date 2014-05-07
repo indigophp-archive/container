@@ -5,7 +5,7 @@ namespace Indigo\Container\Test;
 use Indigo\Container\Struct;
 use Fuel\Validation\Validator;
 
-require_once(__DIR__.'/../ExampleStruct.php');
+require_once(__DIR__.'/../resources/ExampleStruct.php');
 
 /**
  * Tests for Struct container
