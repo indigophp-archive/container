@@ -33,5 +33,11 @@ class StructTest extends AbstractTest
                 'email' => 'user@example.com'
             )
         );
+
+        $container = new \AdvancedExampleStruct(
+            array(
+                'email' => 'user@example.com'
+            )
+        );
     }
 }

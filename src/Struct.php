@@ -23,8 +23,32 @@ use Fuel\Validation\RuleProvider\FromArray;
  */
 abstract class Struct extends Validation
 {
+    /**
+     * Struct
+     *
+     * @var array
+     */
     protected $struct = array();
 
+    /**
+     * If set, the structure must have this key along with the rule key
+     *
+     * @var string
+     */
+    protected $labelKey;
+
+    /**
+     * Rule key
+     *
+     * @var string
+     */
+    protected $ruleKey = 'rules';
+
+    /**
+     * Default Validator class
+     *
+     * @var string
+     */
     protected $validatorClass = 'Fuel\\Validation\\Validator';
 
     public function __construct(array $data = array(), $readOnly = false)
@@ -43,7 +67,7 @@ abstract class Struct extends Validation
 
     public function populateValidator(Validator $validator)
     {
-        $generator = new FromArray;
+        $generator = new FromArray($this->labelKey, $this->ruleKey);
         $generator->setData($this->struct)->populateValidator($validator);
 
         return $validator;
