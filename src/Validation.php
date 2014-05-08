@@ -23,6 +23,11 @@ use InvalidArgumentException;
  */
 class Validation extends AbstractContainer
 {
+    /**
+     * Validator object
+     *
+     * @var Validator
+     */
     protected $validator;
 
     public function __construct(Validator $validator, array $data = array(), $readOnly = false)
@@ -34,11 +39,22 @@ class Validation extends AbstractContainer
         parent::__construct($data, $readOnly);
     }
 
+    /**
+     * Get Validator object
+     *
+     * @return Validator
+     */
     public function getValidator()
     {
         return $this->validator;
     }
 
+    /**
+     * Set Validator object
+     *
+     * @param Validator   $validator
+     * @return Validation
+     */
     public function setValidator(Validator $validator)
     {
         $this->validator = $validator;

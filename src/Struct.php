@@ -12,6 +12,7 @@
 namespace Indigo\Container;
 
 use Fuel\Validation\Validator;
+use Fuel\Validation\ValidationAwareInterface;
 use Fuel\Validation\RuleProvider\FromArray;
 
 /**
@@ -21,7 +22,7 @@ use Fuel\Validation\RuleProvider\FromArray;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-abstract class Struct extends Validation
+abstract class Struct extends Validation implements ValidationAwareInterface
 {
     /**
      * Struct
@@ -58,6 +59,11 @@ abstract class Struct extends Validation
         parent::__construct($validator, $data, $readOnly);
     }
 
+    /**
+     * Create Validator object
+     *
+     * @return Validator
+     */
     public function createValidator()
     {
         $validator = new $this->validatorClass;
@@ -65,6 +71,9 @@ abstract class Struct extends Validation
         return $this->populateValidator($validator);
     }
 
+    /**
+     * {@inheritdocs}
+     */
     public function populateValidator(Validator $validator)
     {
         $generator = new FromArray($this->labelKey, $this->ruleKey);
