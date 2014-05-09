@@ -7,12 +7,12 @@ use Indigo\Container\Test\AbstractTest;
 require_once(__DIR__.'/../../resources/HelperContainer.php');
 
 /**
- * Tests for Serializable trait
+ * Tests for Reset trait
  *
  * @author  Márk Sági-Kazár <mark.sagikazar@gmail.com>
- * @coversDefaultClass  Indigo\Container\Helper\Serializable
+ * @coversDefaultClass  Indigo\Container\Helper\Reset
  */
-class SerialiazableTest extends AbstractTest
+class ResetTest extends AbstractTest
 {
     public function setUp()
     {
@@ -22,12 +22,12 @@ class SerialiazableTest extends AbstractTest
     }
 
     /**
-     * @covers ::serialize
-     * @covers ::unserialize
+     * @covers ::reset
      * @group  Container
      */
     public function testSerialize()
     {
-        $this->assertEquals($this->container, unserialize(serialize($this->container)));
+        $this->assertTrue($this->container->reset());
+        $this->assertEquals(array(), $this->container->getContents());
     }
 }
