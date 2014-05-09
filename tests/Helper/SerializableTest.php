@@ -1,20 +1,22 @@
 <?php
 
-namespace Indigo\Container\Test;
+namespace Indigo\Container\Test\Helper;
 
-require_once(__DIR__.'/../resources/SerializableContainer.php');
+use Indigo\Container\Test\AbstractTest;
+
+require_once(__DIR__.'/../../resources/HelperContainer.php');
 
 /**
  * Tests for Serializable trait
  *
  * @author  Márk Sági-Kazár <mark.sagikazar@gmail.com>
- * @coversDefaultClass  Indigo\Container\Serializable
+ * @coversDefaultClass  Indigo\Container\Helper\Serializable
  */
 class SerialiazableTest extends AbstractTest
 {
     public function setUp()
     {
-        $this->container = new \SerializableContainer(array(
+        $this->container = new \HelperContainer(array(
             'key' => 'value'
         ));
     }

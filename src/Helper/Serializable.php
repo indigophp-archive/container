@@ -9,12 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Indigo\Container;
+namespace Indigo\Container\Helper;
 
 /**
- * Serializable Trait
+ * Serializable Helper
  *
  * Use this trait to serialize the data of the container
+ *
+ * IMPORTANT: Don't forget to implement Serializable interface as well
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
