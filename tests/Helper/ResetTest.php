@@ -25,7 +25,7 @@ class ResetTest extends AbstractTest
      * @covers ::reset
      * @group  Container
      */
-    public function testSerialize()
+    public function testReset()
     {
         $this->assertTrue($this->container->reset());
         $this->assertEquals(array(), $this->container->getContents());
