@@ -4,5 +4,5 @@ use Fuel\Common\DataContainer;
 
 class SerializableContainer extends DataContainer implements Serializable
 {
-    use Indigo\Container\Serializable;
+    use \Indigo\Container\Helper\Serializable;
 }
