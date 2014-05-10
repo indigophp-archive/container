@@ -47,7 +47,7 @@ trait Id
         }
 
         // Filter ignored keys
-        $hashData = Arr::filterKeys($this->data, $this->ignoreKeys, true);
+        $hashData = Arr::filterKeys($this->data, $ignoreKeys, true);
 
         return md5(serialize($hashData));
     }
