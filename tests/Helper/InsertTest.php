@@ -7,7 +7,7 @@ use Indigo\Container\Test\AbstractTest;
 require_once(__DIR__.'/../../resources/HelperContainer.php');
 
 /**
- * Tests for Reset trait
+ * Tests for Insert trait
  *
  * @author  Márk Sági-Kazár <mark.sagikazar@gmail.com>
  * @coversDefaultClass  Indigo\Container\Helper\Insert
