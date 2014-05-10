@@ -30,13 +30,6 @@ trait Id
     protected $id;
 
     /**
-     * Keys to ignore in the hashing process
-     *
-     * @var array
-     */
-    protected $ignoreKeys = array();
-
-    /**
      * Get ID
      *
      * @return string
@@ -45,6 +38,12 @@ trait Id
     {
         if (isset($this->id)) {
             return $this->id;
+        }
+
+        $ignoreKeys = array();
+
+        if (isset($this->ignoreKeys)) {
+            $ignoreKeys = $this->ignoreKeys;
         }
 
         // Filter ignored keys
