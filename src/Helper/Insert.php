@@ -29,7 +29,7 @@ trait Insert
      * @param  integer       $pos   Insert at custom position
      * @return DataContainer
      *
-     * @throws  \RuntimeException
+     * @throws \RuntimeException
      */
     public function insert($value, $pos = null)
     {
@@ -44,7 +44,7 @@ trait Insert
      * @param  integer       $pos   Insert at custom position
      * @return DataContainer
      *
-     * @throws  \RuntimeException
+     * @throws \RuntimeException
      */
     public function insertAssoc($key, $value, $pos = null)
     {

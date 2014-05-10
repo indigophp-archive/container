@@ -52,7 +52,7 @@ class Validation extends AbstractContainer
     /**
      * Set Validator object
      *
-     * @param Validator   $validator
+     * @param  Validator  $validator
      * @return Validation
      */
     public function setValidator(Validator $validator)
