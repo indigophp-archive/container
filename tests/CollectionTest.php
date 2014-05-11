@@ -36,10 +36,10 @@ class CollectionTest extends AbstractTest
     }
 
     /**
-     * @covers ::__construct
-     * @covers ::validate
+     * @covers            ::__construct
+     * @covers            ::validate
      * @expectedException InvalidArgumentException
-     * @group  Container
+     * @group             Container
      */
     public function testConstructDatasetFailure()
     {
@@ -56,9 +56,9 @@ class CollectionTest extends AbstractTest
     }
 
     /**
-     * @covers ::validate
+     * @covers            ::validate
      * @expectedException InvalidArgumentException
-     * @group  Container
+     * @group             Container
      */
     public function testValidate()
     {
@@ -78,10 +78,10 @@ class CollectionTest extends AbstractTest
     }
 
     /**
-     * @covers ::set
-     * @covers ::validate
+     * @covers            ::set
+     * @covers            ::validate
      * @expectedException InvalidArgumentException
-     * @group  Container
+     * @group             Container
      */
     public function testSetFailure()
     {
@@ -103,10 +103,10 @@ class CollectionTest extends AbstractTest
     }
 
     /**
-     * @covers ::setContents
-     * @covers ::validate
+     * @covers            ::setContents
+     * @covers            ::validate
      * @expectedException InvalidArgumentException
-     * @group  Container
+     * @group             Container
      */
     public function testSetContentsFailure()
     {
@@ -126,10 +126,10 @@ class CollectionTest extends AbstractTest
     }
 
     /**
-     * @covers ::merge
-     * @covers ::validate
+     * @covers            ::merge
+     * @covers            ::validate
      * @expectedException InvalidArgumentException
-     * @group  Container
+     * @group             Container
      */
     public function testMergeFailure()
     {

@@ -10,6 +10,7 @@ use Fuel\Common\DataContainer;
  * Tests for Validation container
  *
  * @author  Márk Sági-Kazár <mark.sagikazar@gmail.com>
+ *
  * @coversDefaultClass  Indigo\Container\Validation
  */
 class ValidationTest extends AbstractTest
@@ -51,10 +52,10 @@ class ValidationTest extends AbstractTest
     }
 
     /**
-     * @covers ::__construct
-     * @covers ::validate
+     * @covers            ::__construct
+     * @covers            ::validate
      * @expectedException InvalidArgumentException
-     * @group  Container
+     * @group             Container
      */
     public function testConstructFailure()
     {
@@ -96,10 +97,10 @@ class ValidationTest extends AbstractTest
     }
 
     /**
-     * @covers ::set
-     * @covers ::validate
+     * @covers            ::set
+     * @covers            ::validate
      * @expectedException InvalidArgumentException
-     * @group  Container
+     * @group             Container
      */
     public function testSetFailure()
     {
@@ -119,10 +120,10 @@ class ValidationTest extends AbstractTest
     }
 
     /**
-     * @covers ::merge
-     * @covers ::validate
+     * @covers            ::merge
+     * @covers            ::validate
      * @expectedException InvalidArgumentException
-     * @group  Container
+     * @group             Container
      */
     public function testMergeFailure()
     {

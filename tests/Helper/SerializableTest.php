@@ -10,6 +10,7 @@ require_once(__DIR__.'/../../resources/HelperContainer.php');
  * Tests for Serializable trait
  *
  * @author  Márk Sági-Kazár <mark.sagikazar@gmail.com>
+ *
  * @coversDefaultClass  Indigo\Container\Helper\Serializable
  */
 class SerialiazableTest extends AbstractTest
