@@ -37,37 +37,6 @@ class ValidationTest extends AbstractTest
     }
 
     /**
-     * @covers ::__construct
-     * @covers ::validate
-     * @group  Container
-     */
-    public function testConstruct()
-    {
-        $container = new Validation(
-            $this->validator,
-            array(
-                'email' => 'user@example.com'
-            )
-        );
-    }
-
-    /**
-     * @covers            ::__construct
-     * @covers            ::validate
-     * @expectedException InvalidArgumentException
-     * @group             Container
-     */
-    public function testConstructFailure()
-    {
-        $container = new Validation(
-            $this->validator,
-            array(
-                'email' => 'user@example'
-            )
-        );
-    }
-
-    /**
      * @covers ::getValidator
      * @covers ::setValidator
      * @group  Container
@@ -86,7 +55,7 @@ class ValidationTest extends AbstractTest
 
     /**
      * @covers ::set
-     * @covers ::validate
+     * @covers ::validateOne
      * @group  Container
      */
     public function testSet()
@@ -98,7 +67,7 @@ class ValidationTest extends AbstractTest
 
     /**
      * @covers            ::set
-     * @covers            ::validate
+     * @covers            ::validateOne
      * @expectedException InvalidArgumentException
      * @group             Container
      */

@@ -30,6 +30,9 @@ class Validation extends AbstractContainer
      */
     protected $validator;
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function __construct(Validator $validator, array $data = array(), $readOnly = false)
     {
         $this->validator = $validator;
@@ -83,15 +86,26 @@ class Validation extends AbstractContainer
     }
 
     /**
-     * {@inheritdocs}
+     * Validate one key-value pair
+     *
+     * @param  string $key
+     * @param  mixed  $value
      */
-    public function set($key, $value)
+    public function validateOne($key, $value)
     {
         $result = $this->validator->runField($key, array($key => $value));
 
         if ($result->isValid() === false) {
             throw new InvalidArgumentException($result->getError($key));
         }
+    }
+
+    /**
+     * {@inheritdocs}
+     */
+    public function set($key, $value)
+    {
+        $this->validateOne($key, $value);
 
         return parent::set($key, $value);
     }
