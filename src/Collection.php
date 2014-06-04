@@ -58,9 +58,19 @@ class Collection extends AbstractContainer
     public function validate(array $data)
     {
         foreach ($data as $value) {
-            if ($this->type->validate($value) === false) {
-                throw new InvalidArgumentException($this->type->getMessage());
-            }
+            $this->validateOne($value);
+        }
+    }
+
+    /**
+     * Validate one value
+     *
+     * @param  mixed $value
+     */
+    public function validateOne($value)
+    {
+        if ($this->type->validate($value) === false) {
+            throw new InvalidArgumentException($this->type->getMessage());
         }
     }
 
@@ -69,7 +79,7 @@ class Collection extends AbstractContainer
      */
     public function set($key, $value)
     {
-        $this->validate(array($value));
+        $this->validateOne($value);
 
         return parent::set($key, $value);
     }

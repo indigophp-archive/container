@@ -66,6 +66,17 @@ class CollectionTest extends AbstractTest
     }
 
     /**
+     * @covers            ::validateOne
+     * @expectedException InvalidArgumentException
+     * @group             Container
+     */
+    public function testValidateOne()
+    {
+        $this->assertNull($this->container->validateOne('123'));
+        $this->container->validateOne(123);
+    }
+
+    /**
      * @covers ::set
      * @covers ::validate
      * @group  Container
