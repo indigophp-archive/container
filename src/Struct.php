@@ -52,6 +52,9 @@ abstract class Struct extends Validation implements ValidationAwareInterface
      */
     protected $validatorClass = 'Fuel\\Validation\\Validator';
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function __construct(array $data = array(), $readOnly = false)
     {
         $validator = $this->createValidator();

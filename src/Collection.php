@@ -30,6 +30,9 @@ class Collection extends AbstractContainer
      */
     private $type;
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function __construct(Type $type, array $data = array(), $readOnly = false)
     {
         $this->type = $type;

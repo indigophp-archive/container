@@ -20,33 +20,6 @@ class CollectionTest extends AbstractTest
     }
 
     /**
-     * @covers ::__construct
-     * @covers ::validate
-     * @group  Container
-     */
-    public function testConstruct()
-    {
-        $container = new Collection(
-            new Type('string'),
-            array(
-                'test' => 'test',
-                'test2' => 'test2',
-            )
-        );
-    }
-
-    /**
-     * @covers            ::__construct
-     * @covers            ::validate
-     * @expectedException InvalidArgumentException
-     * @group             Container
-     */
-    public function testConstructDatasetFailure()
-    {
-        $container = new Collection(new Type('string'), array(123));
-    }
-
-    /**
      * @covers ::getType
      * @group  Container
      */

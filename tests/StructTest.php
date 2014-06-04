@@ -22,23 +22,12 @@ class StructTest extends AbstractTest
     }
 
     /**
-     * @covers ::__construct
      * @covers ::createValidator
      * @covers ::populateValidator
      * @group  Container
      */
-    public function testConstruct()
+    public function testValidator()
     {
-        $container = new \ExampleStruct(
-            array(
-                'email' => 'user@example.com'
-            )
-        );
-
-        $container = new \AdvancedExampleStruct(
-            array(
-                'email' => 'user@example.com'
-            )
-        );
+        $this->assertEquals($this->container->createValidator(), $this->container->populateValidator(new Validator));
     }
 }
