@@ -1,22 +1,38 @@
 <?php
 
-namespace Indigo\Container\Test;
+namespace Indigo\Container;
 
-use Indigo\Container\Collection;
 use Fuel\Validation\Rule\Type;
 
 /**
  * Tests for Collection container
  *
- * @author  Márk Sági-Kazár <mark.sagikazar@gmail.com>
- * @coversDefaultClass  Indigo\Container\Collection
+ * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
+ *
+ * @coversDefaultClass Indigo\Container\Collection
  */
 class CollectionTest extends AbstractTest
 {
-    public function setUp()
+    protected $type;
+
+    public function _before()
     {
-        $type = new Type('string');
-        $this->container = new Collection($type);
+        $this->type = new Type('string');
+        $this->container = new Collection($this->type);
+    }
+
+    /**
+     * @covers ::__construct
+     * @group  Container
+     */
+    public function testConstruct()
+    {
+        $container = new Collection($this->type, ['asd'], true);
+
+        $this->assertSame($this->type, $container->getType());
+
+        $this->assertEquals(['asd'], $container->getContents());
+        $this->assertTrue($container->isReadOnly());
     }
 
     /**
@@ -25,7 +41,7 @@ class CollectionTest extends AbstractTest
      */
     public function testType()
     {
-        $this->assertEquals(new Type('string'), $this->container->getType());
+        $this->assertSame($this->type, $this->container->getType());
     }
 
     /**
@@ -35,7 +51,7 @@ class CollectionTest extends AbstractTest
      */
     public function testValidate()
     {
-        $this->container->validate(array(123));
+        $this->container->validate([123]);
     }
 
     /**
@@ -81,7 +97,7 @@ class CollectionTest extends AbstractTest
     {
         $contents = array('test' => 'test');
 
-        $this->container->setContents(array('test' => 'test'));
+        $this->container->setContents(['test' => 'test']);
 
         $this->assertEquals($contents, $this->container->getContents());
     }
@@ -94,7 +110,7 @@ class CollectionTest extends AbstractTest
      */
     public function testSetContentsFailure()
     {
-        $this->container->setContents(array('test' => 123));
+        $this->container->setContents(['test' => 123]);
     }
 
     /**
@@ -104,7 +120,7 @@ class CollectionTest extends AbstractTest
      */
     public function testMerge()
     {
-        $this->container->merge(array('test' => 'test'));
+        $this->container->merge(['test' => 'test']);
 
         $this->assertEquals('test', $this->container->get('test'));
     }
@@ -119,7 +135,7 @@ class CollectionTest extends AbstractTest
     {
         $this->container->merge(
             array('test' => 123),
-            new Collection(new Type('string'), array('test'))
+            new Collection(new Type('string'), ['test'])
         );
     }
 }

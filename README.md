@@ -31,7 +31,7 @@ Via Composer
 ## Testing
 
 ``` bash
-$ phpunit
+$ codecept run
 ```
 
 

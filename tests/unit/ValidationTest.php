@@ -1,23 +1,22 @@
 <?php
 
-namespace Indigo\Container\Test;
+namespace Indigo\Container;
 
-use Indigo\Container\Validation;
 use Fuel\Validation\Validator;
 use Fuel\Common\DataContainer;
 
 /**
  * Tests for Validation container
  *
- * @author  Márk Sági-Kazár <mark.sagikazar@gmail.com>
+ * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  *
- * @coversDefaultClass  Indigo\Container\Validation
+ * @coversDefaultClass Indigo\Container\Validation
  */
 class ValidationTest extends AbstractTest
 {
     protected $validator;
 
-    public function setUp()
+    public function _before()
     {
         $this->validator = new Validator;
 
@@ -37,6 +36,23 @@ class ValidationTest extends AbstractTest
     }
 
     /**
+     * @covers ::__construct
+     * @group  Container
+     */
+    public function testConstruct()
+    {
+        $data = [
+            'email' => 'email@domain.com',
+            'name' => 'test'
+        ];
+
+        $container = new Validation($this->validator, $data, true);
+
+        $this->assertEquals($data, $container->getContents());
+        $this->assertTrue($container->isReadOnly());
+    }
+
+    /**
      * @covers ::getValidator
      * @covers ::setValidator
      * @group  Container
@@ -49,7 +65,7 @@ class ValidationTest extends AbstractTest
 
         $this->assertSame(
             $this->container,
-            $this->container->setValidator($validator)
+            $this->container->setValidator(new Validator)
         );
     }
 
@@ -83,7 +99,10 @@ class ValidationTest extends AbstractTest
      */
     public function testMerge()
     {
-        $this->container->merge(array('name' => 'test'));
+        $this->container->merge([
+            'name'  => 'test',
+            'email' => 'email@domain.com',
+        ]);
 
         $this->assertEquals('test', $this->container->get('name'));
     }
@@ -97,8 +116,8 @@ class ValidationTest extends AbstractTest
     public function testMergeFailure()
     {
         $this->container->merge(
-            array('email' => 123),
-            new DataContainer(array('email' => 'user2@example'))
+            ['email' => 123],
+            new DataContainer(['email' => 'user2@example'])
         );
     }
 }

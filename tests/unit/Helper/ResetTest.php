@@ -1,20 +1,19 @@
 <?php
 
-namespace Indigo\Container\Test\Helper;
+namespace Indigo\Container\Helper;
 
-use Indigo\Container\Test\AbstractTest;
-
-require_once(__DIR__.'/../../resources/HelperContainer.php');
+use Indigo\Container\AbstractTest;
 
 /**
  * Tests for Reset trait
  *
- * @author  Márk Sági-Kazár <mark.sagikazar@gmail.com>
- * @coversDefaultClass  Indigo\Container\Helper\Reset
+ * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
+ *
+ * @coversDefaultClass Indigo\Container\Helper\Reset
  */
 class ResetTest extends AbstractTest
 {
-    public function setUp()
+    public function _before()
     {
         $this->container = new \HelperContainer(array(
             'key' => 'value'
