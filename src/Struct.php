@@ -27,9 +27,9 @@ abstract class Struct extends Validation implements ValidationAwareInterface
     /**
      * Struct
      *
-     * @var array
+     * @var []
      */
-    protected $struct = array();
+    protected $struct = [];
 
     /**
      * If set, the structure must have this key along with the rule key
@@ -53,9 +53,12 @@ abstract class Struct extends Validation implements ValidationAwareInterface
     protected $validatorClass = 'Fuel\\Validation\\Validator';
 
     /**
-     * @codeCoverageIgnore
+     * Creates a new Struct
+     *
+     * @param []      $data
+     * @param boolean $readOnly
      */
-    public function __construct(array $data = array(), $readOnly = false)
+    public function __construct(array $data = [], $readOnly = false)
     {
         $validator = $this->createValidator();
 
@@ -63,7 +66,7 @@ abstract class Struct extends Validation implements ValidationAwareInterface
     }
 
     /**
-     * Create Validator object
+     * Creates a Validator object
      *
      * @return Validator
      */

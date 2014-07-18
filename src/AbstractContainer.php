@@ -14,7 +14,7 @@ namespace Indigo\Container;
 use Fuel\Common\DataContainer;
 use InvalidArgumentException;
 
-if (!class_exists('Arr')) {
+if (class_exists('Arr') === false) {
     // make Arr available in the global namespace
     class_alias('Fuel\Common\Arr', 'Arr');
 }
@@ -29,9 +29,10 @@ if (!class_exists('Arr')) {
 abstract class AbstractContainer extends DataContainer
 {
     /**
-     * Validate a dataset
+     * Validates a dataset
      *
-     * @param  array                    $data
+     * @param [] $data
+     *
      * @throws InvalidArgumentException
      */
     abstract public function validate(array $data);

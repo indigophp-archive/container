@@ -30,7 +30,7 @@ trait Id
     protected $id;
 
     /**
-     * Get ID
+     * Returns the ID
      *
      * @return string
      */
@@ -55,8 +55,9 @@ trait Id
     /**
      * Manually set ID
      *
-     * @param  string $id
-     * @return Id
+     * @param string $id
+     *
+     * @return this
      */
     public function setId($id = null)
     {

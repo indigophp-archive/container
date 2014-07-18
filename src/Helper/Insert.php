@@ -23,13 +23,14 @@ use Fuel\Common\Arr;
 trait Insert
 {
     /**
-     * Insert element to container
+     * Inserts an element to container
      *
-     * @param  mixed         $value
-     * @param  integer       $pos   Insert at custom position
+     * @param mixed   $value
+     * @param integer $pos   Insert at custom position
+     *
      * @return DataContainer
      *
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     public function insert($value, $pos = null)
     {
@@ -37,14 +38,15 @@ trait Insert
     }
 
     /**
-     * Insert assoc element to container
+     * Inserts an assoc element to container
      *
-     * @param  string        $key
-     * @param  mixed         $value
-     * @param  integer       $pos   Insert at custom position
+     * @param string  $key
+     * @param mixed   $value
+     * @param integer $pos
+     *
      * @return DataContainer
      *
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     public function insertAssoc($key, $value, $pos = null)
     {

@@ -31,7 +31,11 @@ class Validation extends AbstractContainer
     protected $validator;
 
     /**
-     * @codeCoverageIgnore
+     * Creates a new Validation container
+     *
+     * @param Validator $validator
+     * @param array     $data
+     * @param boolean   $readOnly
      */
     public function __construct(Validator $validator, array $data = array(), $readOnly = false)
     {
@@ -43,7 +47,7 @@ class Validation extends AbstractContainer
     }
 
     /**
-     * Get Validator object
+     * Returns the Validator object
      *
      * @return Validator
      */
@@ -53,10 +57,11 @@ class Validation extends AbstractContainer
     }
 
     /**
-     * Set Validator object
+     * Sets the Validator object
      *
-     * @param  Validator  $validator
-     * @return Validation
+     * @param Validator $validator
+     *
+     * @return this
      */
     public function setValidator(Validator $validator)
     {
@@ -68,9 +73,10 @@ class Validation extends AbstractContainer
     }
 
     /**
-     * Validate a dataset
+     * Validates a dataset
      *
-     * @param  array                    $data
+     * @param [] $data
+     *
      * @throws InvalidArgumentException
      */
     public function validate(array $data)
@@ -86,10 +92,10 @@ class Validation extends AbstractContainer
     }
 
     /**
-     * Validate one key-value pair
+     * Validates one key-value pair
      *
-     * @param  string $key
-     * @param  mixed  $value
+     * @param string $key
+     * @param mixed  $value
      */
     public function validateOne($key, $value)
     {

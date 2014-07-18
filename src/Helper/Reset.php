@@ -21,13 +21,13 @@ namespace Indigo\Container\Helper;
 trait Reset
 {
     /**
-     * Reset the container
+     * Resets the container
      *
      * @return boolean
      */
     public function reset()
     {
-        $this->data = array();
+        $this->data = [];
 
         return true;
     }

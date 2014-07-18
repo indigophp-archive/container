@@ -31,9 +31,13 @@ class Collection extends AbstractContainer
     private $type;
 
     /**
-     * @codeCoverageIgnore
+     * Creates a new Collection
+     *
+     * @param Type    $type
+     * @param []      $data
+     * @param boolean $readOnly
      */
-    public function __construct(Type $type, array $data = array(), $readOnly = false)
+    public function __construct(Type $type, array $data = [], $readOnly = false)
     {
         $this->type = $type;
 
@@ -43,7 +47,7 @@ class Collection extends AbstractContainer
     }
 
     /**
-     * Get type of collection
+     * Returns the type of collection
      *
      * @return string
      */
@@ -53,9 +57,10 @@ class Collection extends AbstractContainer
     }
 
     /**
-     * Validate a dataset
+     * Validates a dataset
      *
-     * @param  array                    $data
+     * @param [] $data
+     *
      * @throws InvalidArgumentException
      */
     public function validate(array $data)
@@ -66,9 +71,9 @@ class Collection extends AbstractContainer
     }
 
     /**
-     * Validate one value
+     * Validates one value
      *
-     * @param  mixed $value
+     * @param mixed $value
      */
     public function validateOne($value)
     {
