@@ -23,7 +23,7 @@ namespace Indigo\Container\Helper;
 trait Serializable
 {
     /**
-     * {@inheritdocs}
+     * {@inheritdoc}
      */
     public function serialize()
     {
@@ -31,7 +31,7 @@ trait Serializable
     }
 
     /**
-     * {@inheritdocs}
+     * {@inheritdoc}
      */
     public function unserialize($data)
     {

@@ -78,7 +78,7 @@ abstract class Struct extends Validation implements ValidationAwareInterface
     }
 
     /**
-     * {@inheritdocs}
+     * {@inheritdoc}
      */
     public function populateValidator(Validator $validator)
     {

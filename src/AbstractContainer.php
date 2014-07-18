@@ -38,7 +38,7 @@ abstract class AbstractContainer extends DataContainer
     abstract public function validate(array $data);
 
     /**
-     * {@inheritdocs}
+     * {@inheritdoc}
      */
     public function setContents(array $data)
     {
@@ -48,7 +48,7 @@ abstract class AbstractContainer extends DataContainer
     }
 
     /**
-     * {@inheritdocs}
+     * {@inheritdoc}
      */
     public function merge($arg)
     {
