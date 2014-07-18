@@ -6,6 +6,7 @@
 [![Total Downloads](https://poser.pugx.org/indigophp/container/downloads.png)](https://packagist.org/packages/indigophp/container)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/indigophp/container/badges/quality-score.png?s=e6dd4f4a855d5bcf9b9c31467e087fafa8698253)](https://scrutinizer-ci.com/g/indigophp/container/)
 [![License](https://poser.pugx.org/indigophp/container/license.png)](https://packagist.org/packages/indigophp/container)
+[![Dependency Status](https://www.versioneye.com/user/projects/53c95d0fc27567185a000024/badge.svg?style=flat)](https://www.versioneye.com/user/projects/53c95d0fc27567185a000024)
 
 **Container implementations to make data handling better.**
 
