@@ -53,9 +53,6 @@ abstract class Struct extends Validation implements ValidationAwareInterface
     protected $validatorClass = 'Fuel\\Validation\\Validator';
 
     /**
-<<<<<<< HEAD
-     * Creates a new Struct
-=======
      * Rule Provider
      *
      * @var ValidationAwareInterface
@@ -64,7 +61,6 @@ abstract class Struct extends Validation implements ValidationAwareInterface
 
     /**
      * Creates a new Struct Container
->>>>>>> CS fixes, minor code changes
      *
      * @param []      $data
      * @param boolean $readOnly

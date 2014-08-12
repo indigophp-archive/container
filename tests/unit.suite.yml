@@ -3,8 +3,4 @@
 # suite for unit (internal) tests.
 class_name: UnitTester
 modules:
-<<<<<<< HEAD
-    enabled: [Asserts, UnitHelper]
-=======
     enabled: [Asserts, UnitHelper, Mockery]
->>>>>>> Drops in codeception

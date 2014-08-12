@@ -1,7 +1,5 @@
 <?php
 
-<<<<<<< HEAD:tests/unit/CollectionTest.php
-=======
 /*
  * This file is part of the Indigo Container package.
  *
@@ -11,7 +9,6 @@
  * file that was distributed with this source code.
  */
 
->>>>>>> Drops in codeception:tests/unit/CollectionTest.php
 namespace Indigo\Container;
 
 use Fuel\Validation\Rule\Type;
@@ -21,18 +18,11 @@ use Fuel\Validation\Rule\Type;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  *
-<<<<<<< HEAD:tests/unit/CollectionTest.php
- * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
- *
- * @coversDefaultClass Indigo\Container\Collection
-=======
  * @coversDefaultClass Indigo\Container\Collection
  * @group              Container
->>>>>>> Drops in codeception:tests/unit/CollectionTest.php
  */
 class CollectionTest extends AbstractContainerTest
 {
-<<<<<<< HEAD:tests/unit/CollectionTest.php
     protected $type;
 
     public function _before()
@@ -43,12 +33,8 @@ class CollectionTest extends AbstractContainerTest
 
     /**
      * @covers ::__construct
-     * @group  Container
      */
     public function testConstruct()
-=======
-    public function _before()
->>>>>>> Drops in codeception:tests/unit/CollectionTest.php
     {
         $container = new Collection($this->type, ['asd'], true);
 
@@ -56,17 +42,6 @@ class CollectionTest extends AbstractContainerTest
 
         $this->assertEquals(['asd'], $container->getContents());
         $this->assertTrue($container->isReadOnly());
-    }
-
-    /**
-     * @covers ::__construct
-     */
-    public function testConstruct()
-    {
-        $type = $this->container->getType();
-        $container = new Collection($type);
-
-        $this->assertSame($type, $container->getType());
     }
 
     /**
@@ -159,7 +134,7 @@ class CollectionTest extends AbstractContainerTest
     public function testMergeFailure()
     {
         $this->container->merge(
-            array('test' => 123),
+            ['test' => 123],
             new Collection(new Type('string'), ['test'])
         );
     }

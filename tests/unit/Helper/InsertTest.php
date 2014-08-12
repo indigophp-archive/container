@@ -1,10 +1,5 @@
 <?php
 
-<<<<<<< HEAD:tests/unit/Helper/InsertTest.php
-namespace Indigo\Container\Helper;
-
-use Indigo\Container\AbstractTest;
-=======
 /*
  * This file is part of the Indigo Container package.
  *
@@ -17,7 +12,6 @@ use Indigo\Container\AbstractTest;
 namespace Indigo\Container\Helper;
 
 use Indigo\Container\AbstractContainerTest;
->>>>>>> Drops in codeception:tests/unit/Helper/InsertTest.php
 
 /**
  * Tests for Insert Helper
@@ -25,11 +19,8 @@ use Indigo\Container\AbstractContainerTest;
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  *
  * @coversDefaultClass Indigo\Container\Helper\Insert
-<<<<<<< HEAD:tests/unit/Helper/InsertTest.php
-=======
  * @group              Container
  * @group              Helper
->>>>>>> Drops in codeception:tests/unit/Helper/InsertTest.php
  */
 class InsertTest extends AbstractContainerTest
 {
