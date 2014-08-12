@@ -62,8 +62,16 @@ abstract class AbstractContainer extends DataContainer
 
         $arguments = call_user_func_array('Arr::merge', $arguments);
 
-        $this->validate($arguments);
+        $data = $this->data;
 
-        return parent::merge($arguments);
+        $return = parent::merge($arguments);
+
+        try {
+            $this->validate($this->data);
+        } catch (\InvalidArgumentException $e) {
+            $this->data = $data;
+
+            throw $e;
+        }
     }
 }
