@@ -53,7 +53,18 @@ abstract class Struct extends Validation implements ValidationAwareInterface
     protected $validatorClass = 'Fuel\\Validation\\Validator';
 
     /**
+<<<<<<< HEAD
      * Creates a new Struct
+=======
+     * Rule Provider
+     *
+     * @var ValidationAwareInterface
+     */
+    protected $provider;
+
+    /**
+     * Creates a new Struct Container
+>>>>>>> CS fixes, minor code changes
      *
      * @param []      $data
      * @param boolean $readOnly
@@ -82,9 +93,38 @@ abstract class Struct extends Validation implements ValidationAwareInterface
      */
     public function populateValidator(Validator $validator)
     {
-        $generator = new FromArray($this->labelKey, $this->ruleKey);
-        $generator->setData($this->struct)->populateValidator($validator);
+        if ($this->provider === null) {
+            $provider = new FromArray($this->labelKey, $this->ruleKey);
 
-        return $validator;
+            $this->setProvider($provider);
+        }
+
+        return $this->provider->populateValidator($validator);
+    }
+
+    /**
+     * Returns the Rule Provider
+     *
+     * @return ValidationAwareInterface
+     */
+    public function getProvider()
+    {
+        return $this->provider;
+    }
+
+    /**
+     * Sets the Rule Provider
+     *
+     * @param ValidationAwareInterface $provider
+     *
+     * @return this
+     */
+    public function setProvider(ValidationAwareInterface $provider)
+    {
+        $provider->setData($this->struct);
+
+        $this->provider = $provider;
+
+        return $this;
     }
 }

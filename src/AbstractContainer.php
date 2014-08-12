@@ -12,7 +12,6 @@
 namespace Indigo\Container;
 
 use Fuel\Common\DataContainer;
-use InvalidArgumentException;
 
 if (class_exists('Arr') === false) {
     // make Arr available in the global namespace
@@ -20,7 +19,7 @@ if (class_exists('Arr') === false) {
 }
 
 /**
- * Abstract container
+ * Abstract Container
  *
  * Common container method
  *

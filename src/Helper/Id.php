@@ -16,7 +16,7 @@ use Fuel\Common\Arr;
 /**
  * Id Helper
  *
- * Generate unique identifier based on content
+ * Generates a unique identifier based on content
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
@@ -40,7 +40,7 @@ trait Id
             return $this->id;
         }
 
-        $ignoreKeys = array();
+        $ignoreKeys = [];
 
         if (isset($this->ignoreKeys)) {
             $ignoreKeys = $this->ignoreKeys;
@@ -49,6 +49,18 @@ trait Id
         // Filter ignored keys
         $hashData = Arr::filterKeys($this->data, $ignoreKeys, true);
 
+        return $this->hashId($hashData);
+    }
+
+    /**
+     * Overridable method for custom id hashing
+     *
+     * @param string $id
+     *
+     * @return string
+     */
+    protected function hashId($hashData)
+    {
         return md5(serialize($hashData));
     }
 

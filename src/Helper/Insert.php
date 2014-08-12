@@ -24,11 +24,19 @@ trait Insert
 {
     /**
      * Inserts an element to container
+<<<<<<< HEAD
      *
      * @param mixed   $value
      * @param integer $pos   Insert at custom position
      *
      * @return DataContainer
+=======
+     *
+     * @param mixed   $value
+     * @param integer $pos   Insert at custom position
+     *
+     * @return this
+>>>>>>> CS fixes, minor code changes
      *
      * @throws RuntimeException
      */
@@ -42,9 +50,15 @@ trait Insert
      *
      * @param string  $key
      * @param mixed   $value
+<<<<<<< HEAD
      * @param integer $pos
      *
      * @return DataContainer
+=======
+     * @param integer $pos   Insert at custom position
+     *
+     * @return this
+>>>>>>> CS fixes, minor code changes
      *
      * @throws RuntimeException
      */
@@ -66,7 +80,7 @@ trait Insert
             if ($key === null) {
                 Arr::insert($this->data, $value, $pos);
             } else {
-                Arr::insertAssoc($this->data, array($key => $value), $pos);
+                Arr::insertAssoc($this->data, [$key => $value], $pos);
             }
         }
 

@@ -12,10 +12,9 @@
 namespace Indigo\Container;
 
 use Fuel\Validation\Rule\Type;
-use InvalidArgumentException;
 
 /**
- * Collection container
+ * Collection Container
  *
  * Store a collection of type
  *
@@ -31,7 +30,7 @@ class Collection extends AbstractContainer
     private $type;
 
     /**
-     * Creates a new Collection
+     * Creates a new Collection Container
      *
      * @param Type    $type
      * @param []      $data
@@ -60,8 +59,6 @@ class Collection extends AbstractContainer
      * Validates a dataset
      *
      * @param [] $data
-     *
-     * @throws InvalidArgumentException
      */
     public function validate(array $data)
     {
@@ -74,11 +71,13 @@ class Collection extends AbstractContainer
      * Validates one value
      *
      * @param mixed $value
+     *
+     * @throws InvalidArgumentException
      */
     public function validateOne($value)
     {
         if ($this->type->validate($value) === false) {
-            throw new InvalidArgumentException($this->type->getMessage());
+            throw new \InvalidArgumentException($this->type->getMessage());
         }
     }
 

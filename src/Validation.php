@@ -12,7 +12,6 @@
 namespace Indigo\Container;
 
 use Fuel\Validation\Validator;
-use InvalidArgumentException;
 
 /**
  * Validation Container
@@ -31,13 +30,20 @@ class Validation extends AbstractContainer
     protected $validator;
 
     /**
+<<<<<<< HEAD
      * Creates a new Validation container
      *
      * @param Validator $validator
      * @param array     $data
+=======
+     * Creates a new Validation Container
+     *
+     * @param Validator $validator
+     * @param []        $data
+>>>>>>> CS fixes, minor code changes
      * @param boolean   $readOnly
      */
-    public function __construct(Validator $validator, array $data = array(), $readOnly = false)
+    public function __construct(Validator $validator, array $data = [], $readOnly = false)
     {
         $this->validator = $validator;
 
@@ -87,7 +93,7 @@ class Validation extends AbstractContainer
             $error = $result->getErrors();
             $error = reset($error);
 
-            throw new InvalidArgumentException($error);
+            throw new \InvalidArgumentException($error);
         }
     }
 
@@ -96,13 +102,18 @@ class Validation extends AbstractContainer
      *
      * @param string $key
      * @param mixed  $value
+<<<<<<< HEAD
+=======
+     *
+     * @throws InvalidArgumentException
+>>>>>>> CS fixes, minor code changes
      */
     public function validateOne($key, $value)
     {
         $result = $this->validator->runField($key, array($key => $value));
 
         if ($result->isValid() === false) {
-            throw new InvalidArgumentException($result->getError($key));
+            throw new \InvalidArgumentException($result->getError($key));
         }
     }
 
