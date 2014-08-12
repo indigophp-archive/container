@@ -51,20 +51,9 @@ abstract class AbstractContainer extends DataContainer
      */
     public function merge($arg)
     {
-        $arguments = array_map(function ($array) {
-            if ($array instanceof DataContainer) {
-                return $array->getContents();
-            }
-
-            return $array;
-
-        }, func_get_args());
-
-        $arguments = call_user_func_array('Arr::merge', $arguments);
-
         $data = $this->data;
 
-        $return = parent::merge($arguments);
+        $return = call_user_func_array('parent::merge', func_get_args());
 
         try {
             $this->validate($this->data);
@@ -73,5 +62,7 @@ abstract class AbstractContainer extends DataContainer
 
             throw $e;
         }
+
+        return $return;
     }
 }
