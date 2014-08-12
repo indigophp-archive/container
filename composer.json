@@ -16,13 +16,26 @@
         "fuelphp/validation": "dev-master"
     },
     "require-dev": {
+<<<<<<< HEAD
         "codeception/codeception": "~2.0.0"
+=======
+        "codeception/codeception": "~2.0.0",
+        "codeception/mockery-module": "dev-master"
+>>>>>>> Drops in codeception
     },
     "autoload": {
         "psr-4": {
             "Indigo\\Container\\": "src/"
         }
     },
+<<<<<<< HEAD
+=======
+    "autoload-dev": {
+        "psr-4": {
+            "Indigo\\Container\\Test\\": "tests/"
+        }
+    },
+>>>>>>> Drops in codeception
     "prefer-stable": true,
     "minimum-stability": "dev"
 }

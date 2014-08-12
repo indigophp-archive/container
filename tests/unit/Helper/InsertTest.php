@@ -1,17 +1,37 @@
 <?php
 
+<<<<<<< HEAD:tests/unit/Helper/InsertTest.php
 namespace Indigo\Container\Helper;
 
 use Indigo\Container\AbstractTest;
+=======
+/*
+ * This file is part of the Indigo Container package.
+ *
+ * (c) Indigo Development Team
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Indigo\Container\Helper;
+
+use Indigo\Container\AbstractContainerTest;
+>>>>>>> Drops in codeception:tests/unit/Helper/InsertTest.php
 
 /**
- * Tests for Insert trait
+ * Tests for Insert Helper
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  *
  * @coversDefaultClass Indigo\Container\Helper\Insert
+<<<<<<< HEAD:tests/unit/Helper/InsertTest.php
+=======
+ * @group              Container
+ * @group              Helper
+>>>>>>> Drops in codeception:tests/unit/Helper/InsertTest.php
  */
-class InsertTest extends AbstractTest
+class InsertTest extends AbstractContainerTest
 {
     public function _before()
     {
@@ -20,7 +40,6 @@ class InsertTest extends AbstractTest
 
     /**
      * @covers ::insertAssoc
-     * @group  Container
      */
     public function testInsertAssoc()
     {
@@ -37,7 +56,6 @@ class InsertTest extends AbstractTest
     /**
      * @covers ::insert
      * @covers ::insertAssoc
-     * @group  Container
      */
     public function testInsert()
     {
@@ -58,7 +76,6 @@ class InsertTest extends AbstractTest
     /**
      * @covers            ::insertAssoc
      * @expectedException \RuntimeException
-     * @group             Container
      */
     public function testInsertAssocFailure()
     {

@@ -1,18 +1,38 @@
 <?php
 
+<<<<<<< HEAD:tests/unit/CollectionTest.php
+=======
+/*
+ * This file is part of the Indigo Container package.
+ *
+ * (c) Indigo Development Team
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+>>>>>>> Drops in codeception:tests/unit/CollectionTest.php
 namespace Indigo\Container;
 
 use Fuel\Validation\Rule\Type;
 
 /**
- * Tests for Collection container
+ * Tests for Collection Container
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  *
+<<<<<<< HEAD:tests/unit/CollectionTest.php
+ * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
+ *
  * @coversDefaultClass Indigo\Container\Collection
+=======
+ * @coversDefaultClass Indigo\Container\Collection
+ * @group              Container
+>>>>>>> Drops in codeception:tests/unit/CollectionTest.php
  */
-class CollectionTest extends AbstractTest
+class CollectionTest extends AbstractContainerTest
 {
+<<<<<<< HEAD:tests/unit/CollectionTest.php
     protected $type;
 
     public function _before()
@@ -26,6 +46,9 @@ class CollectionTest extends AbstractTest
      * @group  Container
      */
     public function testConstruct()
+=======
+    public function _before()
+>>>>>>> Drops in codeception:tests/unit/CollectionTest.php
     {
         $container = new Collection($this->type, ['asd'], true);
 
@@ -36,8 +59,18 @@ class CollectionTest extends AbstractTest
     }
 
     /**
+     * @covers ::__construct
+     */
+    public function testConstruct()
+    {
+        $type = $this->container->getType();
+        $container = new Collection($type);
+
+        $this->assertSame($type, $container->getType());
+    }
+
+    /**
      * @covers ::getType
-     * @group  Container
      */
     public function testType()
     {
@@ -47,7 +80,6 @@ class CollectionTest extends AbstractTest
     /**
      * @covers            ::validate
      * @expectedException InvalidArgumentException
-     * @group             Container
      */
     public function testValidate()
     {
@@ -57,7 +89,6 @@ class CollectionTest extends AbstractTest
     /**
      * @covers            ::validateOne
      * @expectedException InvalidArgumentException
-     * @group             Container
      */
     public function testValidateOne()
     {
@@ -68,7 +99,6 @@ class CollectionTest extends AbstractTest
     /**
      * @covers ::set
      * @covers ::validate
-     * @group  Container
      */
     public function testSet()
     {
@@ -81,7 +111,6 @@ class CollectionTest extends AbstractTest
      * @covers            ::set
      * @covers            ::validate
      * @expectedException InvalidArgumentException
-     * @group             Container
      */
     public function testSetFailure()
     {
@@ -91,7 +120,6 @@ class CollectionTest extends AbstractTest
     /**
      * @covers ::setContents
      * @covers ::validate
-     * @group  Container
      */
     public function testSetContents()
     {
@@ -106,7 +134,6 @@ class CollectionTest extends AbstractTest
      * @covers            ::setContents
      * @covers            ::validate
      * @expectedException InvalidArgumentException
-     * @group             Container
      */
     public function testSetContentsFailure()
     {
@@ -116,7 +143,6 @@ class CollectionTest extends AbstractTest
     /**
      * @covers ::merge
      * @covers ::validate
-     * @group  Container
      */
     public function testMerge()
     {
@@ -129,7 +155,6 @@ class CollectionTest extends AbstractTest
      * @covers            ::merge
      * @covers            ::validate
      * @expectedException InvalidArgumentException
-     * @group             Container
      */
     public function testMergeFailure()
     {
